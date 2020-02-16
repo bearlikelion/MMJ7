@@ -28,6 +28,7 @@ A metroidvania game developed in one month (Feb 15th - Mar 15th)
 |SoundsbyDane | Audio
 |BricksParts | Art
 |N. | Art
+|Carinamachina | Project Manager
 
 ## The Tech
 
