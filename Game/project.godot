@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Metroidvania Jam"
-run/main_scene="res://src/Mark/MovementTest.tscn"
+run/main_scene="res://src/_personal/Mark/MovementTest.tscn"
 config/icon="res://assets/icon.png"
 
 [input]
