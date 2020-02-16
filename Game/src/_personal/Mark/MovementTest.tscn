@@ -20,3 +20,30 @@ position = Vector2( 511.603, 300.633 )
 
 [node name="Demon" parent="." instance=ExtResource( 4 )]
 position = Vector2( 440, -184 )
+
+[node name="Demon2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 752, -248 )
+
+[node name="Demon3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1128, -352 )
+
+[node name="Demon4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1320, -152 )
+
+[node name="Demon5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1648, 104 )
+
+[node name="Demon6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1408, 136 )
+
+[node name="Demon7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1144, 288 )
+
+[node name="Demon8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1216, 480 )
+
+[node name="Demon9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1704, -360 )
+
+[node name="Demon10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 280, -456 )
