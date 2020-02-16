@@ -1,6 +1,6 @@
 # Metroidvania Month 7 Jam
 
-![Example prototype screenshot](Screenshots/FirstScreenshot.png)
+![Example prototype screenshot](Screenshots/TileTest.png)
 
 [Metroidvania Month 7 on Itch.io](https://itch.io/jam/metroidvania-month-7)
 
