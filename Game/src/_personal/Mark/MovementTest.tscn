@@ -10,6 +10,7 @@
 
 [node name="LockedCamera" type="Camera2D" parent="."]
 current = true
+smoothing_enabled = true
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
