@@ -11,5 +11,5 @@
 position = Vector2( 511.603, 300.633 )
 
 [node name="FollowCamera" type="Camera2D" parent="Player"]
-position = Vector2( 0, 3.05176e-05 )
 current = true
+editor_draw_drag_margin = true
