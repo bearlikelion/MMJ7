@@ -15,7 +15,3 @@ script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 511.603, 300.633 )
-
-[node name="FollowCamera" type="Camera2D" parent="Player"]
-visible = false
-editor_draw_drag_margin = true
