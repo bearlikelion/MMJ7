@@ -22,7 +22,7 @@ func _physics_process(_delta) -> void:
 
 
 func _on_Area2D_body_entered(body) -> void:
-    if body.is_in_group("Player"):
+    if body.is_in_group("player"):
         # TODO: Damage Player        
         print("[BULLET] Damage Player")
         queue_free()

@@ -22,14 +22,14 @@ func fire() -> void:
 
 
 func _on_AgroRadius_body_entered(body) -> void:
-    if body.is_in_group("Player"):
+    if body.is_in_group("player"):
         print("[Turret] Targeting player!")
         $FireRate.start()
         player = body
 
 
 func _on_AgroRadius_body_exited(body) -> void:
-    if body.is_in_group("Player"):
+    if body.is_in_group("player"):
         $FireRate.stop()
         print("[Turret] Lost target")
         player = null

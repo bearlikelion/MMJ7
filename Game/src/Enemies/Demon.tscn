@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Demon" type="KinematicBody2D" groups=[
-"Enemy",
+"enemy",
 ]]
 script = ExtResource( 2 )
 

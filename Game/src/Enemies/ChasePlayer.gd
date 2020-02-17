@@ -13,7 +13,7 @@ func _physics_process(_delta) -> void:
     
 
 func _on_AgroRadius_body_entered(body) -> void:
-    if body.is_in_group("Player"):
+    if body.is_in_group("player"):
         player = body
     
 func _on_AgroRadius_body_exited(_body) -> void:

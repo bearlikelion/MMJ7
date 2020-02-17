@@ -9,7 +9,7 @@ height = 1.89516
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Turret" type="KinematicBody2D" groups=[
-"Enemy",
+"enemy",
 ]]
 script = ExtResource( 2 )
 

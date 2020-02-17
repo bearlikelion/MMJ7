@@ -7,7 +7,7 @@
 extents = Vector2( 6.74371, 10.1654 )
 
 [node name="Player" type="KinematicBody2D" groups=[
-"Player",
+"player",
 ]]
 script = ExtResource( 2 )
 __meta__ = {
@@ -15,6 +15,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.27739, 4.16084 )
 shape = SubResource( 1 )
 
