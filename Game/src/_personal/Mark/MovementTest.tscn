@@ -29,9 +29,11 @@ position = Vector2( 1144, -400 )
 
 [node name="Turret2" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 1648, -152 )
+projectile_speed = 75
 
 [node name="Turret3" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 1240, 168 )
+projectile_speed = 250
 
 [node name="Demon2" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 1600, 232 )
