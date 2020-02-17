@@ -32,15 +32,19 @@ func get_input():
     if Input.is_action_pressed('right'):
         velocity.x += 1
 
-    if Input.is_action_pressed("action_run"):
-        is_running = true
-    else:
-        is_running = false
+    if Input.is_action_pressed("action_run") && $States.current_state.name != "Run":
+        # is_running = true
+        $States.change_state("Run")
+    elif Input.is_action_just_released("action_run") && velocity != Vector2.ZERO:
+        # is_running = false
+        $States.change_state("Walk")
+    elif Input.is_action_just_released("action_run") && velocity == Vector2.ZERO:
+        $States.change_state("Idle")
 
     # Normalize so diagonal movement isn't faster
     velocity = velocity.normalized() * speed
 
 
 func _on_states_state_changed(state):
-    print(state)
+    print("[State]: " + state)
     pass # Replace with function body.

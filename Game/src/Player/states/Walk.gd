@@ -10,8 +10,8 @@ func exit():
 	pass
 
 func update(_delta):
-	if player.is_running:
-		state_machine.change_state("Run")
-	if player.velocity == Vector2.ZERO:
-		state_machine.change_state("Idle")
+	# if player.is_running:
+	# 	state_machine.change_state("Run")
+	# if player.velocity == Vector2.ZERO:
+	# 	state_machine.change_state("Idle")
 	pass
