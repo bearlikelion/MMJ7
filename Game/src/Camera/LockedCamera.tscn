@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/_personal/Mark/LockedCamera.gd" type="Script" id=1]
+
+[node name="LockedCamera" type="Camera2D" groups=[
+"camera",
+]]
+visible = false
+current = true
+smoothing_enabled = true
+script = ExtResource( 1 )
