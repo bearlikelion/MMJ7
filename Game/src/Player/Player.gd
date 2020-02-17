@@ -8,10 +8,11 @@ var is_running := false
 var queued_action
 
 func _ready():
-	$states.start()
+	$States.start()
 	pass
 
 func _physics_process(_delta):
+	add_to_group("player")
 	get_input()
 	velocity = move_and_slide(velocity)
 
