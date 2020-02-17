@@ -6,7 +6,7 @@ export (float, 0, 1.0) var acceleration = 0.25
 
 var velocity := Vector2.ZERO
 
-func handle_input() -> void:
+func get_input() -> void:
     velocity = Vector2.ZERO
     
     if Input.is_action_pressed('up'):
@@ -22,5 +22,5 @@ func handle_input() -> void:
     velocity = velocity.normalized() * speed
     
 func _physics_process(_delta : float) -> void:
-    handle_input()
+    get_input()
     velocity = move_and_slide(velocity)
