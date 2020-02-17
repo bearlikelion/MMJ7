@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/temp_dungeon_tileset.png-8caaa51c83a16b7ae8982f70791f2679.stex"
+path="res://.import/temp_tilesheet_stone_paver.png-e9fd4aa06feb441624776c9968ec15fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tileset/temp_dungeon_tileset.png"
-dest_files=[ "res://.import/temp_dungeon_tileset.png-8caaa51c83a16b7ae8982f70791f2679.stex" ]
+source_file="res://assets/Tileset/temp_tilesheet_stone_paver.png"
+dest_files=[ "res://.import/temp_tilesheet_stone_paver.png-e9fd4aa06feb441624776c9968ec15fe.stex" ]
 
 [params]
 
