@@ -21,24 +21,23 @@ func _ready():
 	add_child(run_timer)
 	add_child(run_cooldown_timer)
 
+
 func update(delta):
 	var input_direction = get_input_direction()
 	move(input_direction,delta)
-	
+
 
 func enter():
+	print(run_cooldown_timer.is_stopped())
 	if !run_cooldown_timer.is_stopped():
-		emit_signal("finished", "move")
+		emit_signal("finished", "walk")
 	else:
 		run_timer.start()
 		.enter()
 
 
 func _on_run_timer_timeout()->void:
-	run_cooldown_timer.start()
-	run_timer.stop()
-	print("running end")
-	emit_signal("finished", "move")
+	emit_signal("finished", "walk")
 
 
 func _on_run_cooldown_timer_timeout()->void:
@@ -48,4 +47,6 @@ func _on_run_cooldown_timer_timeout()->void:
 
 
 func exit():
+	run_cooldown_timer.start()
+	print("running end")
 	run_timer.stop()

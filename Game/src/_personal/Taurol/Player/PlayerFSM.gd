@@ -5,7 +5,8 @@ var can_run:=true
 func _ready():
 	states_map = {
 		"idle": $Idle,
-		"move": $Move,
+		"walk": $Walk,
+		"sprint":$Sprint,
 		"run": $Run,
 		"jump": $Jump,
 		"hurt": $Hurt,
