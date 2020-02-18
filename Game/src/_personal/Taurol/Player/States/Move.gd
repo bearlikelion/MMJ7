@@ -1,7 +1,7 @@
 extends "res://src/_personal/Taurol/Player/States/motion.gd"
 
-const MAX_SPEED :=300
-const ACCELERATION := 2000
+export var MAX_SPEED :=300
+export var ACCELERATION := 2000
 
 var speed:=0.0
 var motion := Vector2.ZERO
@@ -21,6 +21,10 @@ func update(delta):
 		if speed==0:
 			emit_signal("finished", "idle")
 	
+	move(input_direction,delta)
+
+
+func move(input_direction,delta):
 	if input_direction==Vector2.ZERO:
 		apply_friction(ACCELERATION*delta)
 	else:

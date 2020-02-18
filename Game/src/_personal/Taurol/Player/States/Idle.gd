@@ -7,7 +7,6 @@ extends "res://src/_personal/Taurol/Player/States/motion.gd"
 
 
 func enter():
-	print("Idle")
 	pass
 	#owner.get_node("AnimationPlayer").play("idle")
 
