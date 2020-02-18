@@ -11,7 +11,7 @@
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
 
 [node name="LockedCamera" type="Camera2D" parent="."]
-visible = false
+anchor_mode = 0
 current = true
 smoothing_enabled = true
 script = ExtResource( 5 )
