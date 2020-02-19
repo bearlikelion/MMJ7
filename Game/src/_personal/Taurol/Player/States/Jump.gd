@@ -1,11 +1,10 @@
 extends "res://src/_personal/Taurol/Player/States/motion.gd"
 
 export var JUMP_SPEED :=800
+export var ACCELERATION := 500
+export var DECCELERATION:= 300
 export var DURATION:=0.5
 
-
-var ACCELERATION := 500
-var DECCELERATION:= 300
 var timer :=Timer.new()
 
 func _ready():
