@@ -48,8 +48,10 @@ func apply_movement(accel):
 	owner.motion+=accel
 	owner.motion=owner.motion.clamped(SIDE_STEP_SPEED)
 
+
 func _on_timer_timeout():
 	emit_signal("finished","walk")
+
 
 func exit():
 	timer.stop()

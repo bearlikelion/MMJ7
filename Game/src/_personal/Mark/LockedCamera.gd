@@ -29,8 +29,8 @@ func update_grid_position() -> void:
 
 
 func calculate_grid_position() -> Vector2:    
-    var x = floor(player.position.x / grid_size.x)
-    var y = floor(player.position.y / grid_size.y)    
+    var x = floor(player.global_position.x / grid_size.x)
+    var y = floor(player.global_position.y / grid_size.y)    
     
     return Vector2(x, y)
 
