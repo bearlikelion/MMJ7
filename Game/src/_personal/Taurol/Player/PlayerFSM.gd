@@ -9,6 +9,7 @@ func _ready():
 		"sprint":$Sprint,
 		"run": $Run,
 		"jump": $Jump,
+		"sidestep":$SideStep,
 		"hurt": $Hurt,
 		"shoot": $Shoot,
 	}
@@ -19,7 +20,11 @@ func _input(event):
 		if event.scancode==KEY_P and !event.pressed and can_run:
 			_change_state("run")
 			can_run=false
-	
+		if event.scancode==KEY_T and !event.pressed:
+			_change_state("jump")
+		if event.scancode==KEY_Y and !event.pressed:
+			_change_state("sidestep")
+		
 	._input(event)
 
 

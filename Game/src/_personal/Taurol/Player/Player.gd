@@ -6,3 +6,4 @@ var motion := Vector2.ZERO
 
 func _ready():
 	pass # Replace with function body.
+
