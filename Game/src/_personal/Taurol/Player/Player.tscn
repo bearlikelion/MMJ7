@@ -59,8 +59,6 @@ script = ExtResource( 7 )
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
-ACCELERATION = 1000
-DECCELERATION = 800
 
 [node name="SideStep" type="Node" parent="StateMachine"]
 script = ExtResource( 11 )
