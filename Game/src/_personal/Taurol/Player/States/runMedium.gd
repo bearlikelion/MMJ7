@@ -6,8 +6,6 @@ extends "res://src/_personal/Taurol/Player/States/RunBase.gd"
 # var b = "text"
 
 func update(delta):
-	if owner.motion>MAX_SPEED:
-		emit_signal("finished","runFast")
 	if owner.motion.length()<=MIN_SPEED:
 		emit_signal("finished","runSlow")
 	.update(delta)
