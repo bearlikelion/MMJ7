@@ -8,10 +8,10 @@
 [ext_resource path="res://src/_personal/Taurol/TestScenes/MovingPlatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/_personal/Taurol/Enviroment/MovingPlatform.gd" type="Script" id=7]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "test"
 length = 5.0
 loop = true
@@ -28,8 +28,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1664, -448 ), Vector2( 1856, -448 ), Vector2( 1664, -448 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "test"
+[sub_resource type="Animation" id=3]
 length = 5.0
 loop = true
 tracks/0/type = "value"
@@ -57,18 +56,18 @@ script = ExtResource( 7 )
 polygon = PoolVector2Array( -64, 64, -64, -64, 64, -64, 64, 64 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform2"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform2"]
 autoplay = "test"
-anims/test = SubResource( 3 )
+anims/test = SubResource( 2 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 6 )]
 position = Vector2( 500, 300 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform"]
 autoplay = "test"
-anims/test = SubResource( 1 )
+anims/test = SubResource( 3 )
 
 [node name="LockedCamera" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -100,3 +99,12 @@ position = Vector2( 1600, 232 )
 
 [node name="Demon3" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 1224, 344 )
+
+[node name="MovingPlatform3" type="Area2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform3"]
+
+[node name="Sprite" type="Sprite" parent="MovingPlatform3"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform3"]

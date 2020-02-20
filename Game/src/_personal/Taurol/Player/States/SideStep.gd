@@ -50,7 +50,7 @@ func apply_movement(accel):
 
 
 func _on_timer_timeout():
-	emit_signal("finished","walk")
+	emit_signal("finished","idle")
 
 
 func exit():

@@ -2,12 +2,13 @@ extends "res://src/_personal/Taurol/StateMachine/state_machine.gd"
 
 var can_run:=true
 
+
 func _ready():
 	states_map = {
 		"idle": $Idle,
-		"walk": $Walk,
-		"sprint":$Sprint,
-		"run": $Run,
+		"runSlow": $runSlow,
+		"runMedium":$runMedium,
+		"runFast": $runFast,
 		"jump": $Jump,
 		"sidestep":$SideStep,
 		"hurt": $Hurt,
@@ -17,9 +18,6 @@ func _ready():
 
 func _input(event):
 	if event is InputEventKey:
-		if event.scancode==KEY_P and !event.pressed and can_run:
-			_change_state("run")
-			can_run=false
 		if event.scancode==KEY_T and !event.pressed:
 			_change_state("jump")
 		if event.scancode==KEY_Y and !event.pressed:
@@ -37,6 +35,7 @@ func _change_state(state_name):
 	if state_name in ["hurt"]:
 		states_stack.push_front(states_map[state_name])
 	._change_state(state_name)
+	print(current_state.get_name())
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
