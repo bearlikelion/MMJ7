@@ -9,9 +9,9 @@ onready var player = get_node("../Player")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:            
     grid_size = get_viewport_rect().size            
-    var start_position = self.position    
-    self.position = player.position
-    camera_offset = Vector2(start_position - self.position).floor()        
+    #var start_position = self.position    
+    #self.position = player.position
+    #camera_offset = Vector2(start_position - self.position).floor()        
     update_grid_position()
 
 
@@ -29,8 +29,8 @@ func update_grid_position() -> void:
 
 
 func calculate_grid_position() -> Vector2:    
-    var x = floor(player.position.x / grid_size.x)
-    var y = floor(player.position.y / grid_size.y)    
+    var x = floor(player.global_position.x / grid_size.x)
+    var y = floor(player.global_position.y / grid_size.y)    
     
     return Vector2(x, y)
 
