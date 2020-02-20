@@ -15,7 +15,7 @@ func _ready():
 
 func enter():
 	if owner.motion==Vector2.ZERO:
-		emit_signal("finished","walk")
+		emit_signal("finished","idle")
 	owner.motion=owner.motion.normalized()*JUMP_SPEED
 	timer.start()
 
@@ -48,10 +48,10 @@ func apply_movement(accel):
 
 func _on_timer_timeout():
 	
-	emit_signal("finished","idle")
+	emit_signal("finished","runFast")
 
 
 func exit():
 	timer.stop()
-	owner.motion=Vector2.ZERO
+	#owner.motion=Vector2.ZERO
 	print("exit jumping state")
