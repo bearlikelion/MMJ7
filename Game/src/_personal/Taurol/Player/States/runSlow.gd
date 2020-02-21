@@ -1,9 +1,7 @@
 extends "res://src/_personal/Taurol/Player/States/RunBase.gd"
 
 
-# Declare member variables here. Examples:
 var offset:int=5
-
 
 func update(delta):
 	if owner.motion.length()>MAX_SPEED+offset:
@@ -16,4 +14,3 @@ func apply_movement(accel):
 		owner.motion+=accel
 	else:
 		.apply_movement(accel)
-	
