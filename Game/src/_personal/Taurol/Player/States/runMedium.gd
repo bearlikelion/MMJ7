@@ -11,6 +11,6 @@ func update(delta):
 		emit_signal("finished","runSlow")
 	.update(delta)
 
-func apply_movement(accel):
+"""func apply_movement(accel):
 	owner.motion+=accel
-	owner.motion=owner.motion.clamped(MAX_SPEED)
+	owner.motion=owner.motion.clamped(MAX_SPEED)"""

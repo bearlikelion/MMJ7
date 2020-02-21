@@ -10,6 +10,8 @@ func update(delta):
 		emit_signal("finished","runMedium")
 	.update(delta)
 
+"""
 func apply_movement(accel):
 	owner.motion+=accel
 	owner.motion=owner.motion.clamped(MAX_SPEED)
+"""

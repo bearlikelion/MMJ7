@@ -55,3 +55,5 @@ func apply_friction(amount):
 
 func apply_movement(accel):
 	owner.motion+=accel
+	owner.motion=owner.motion.clamped(MAX_SPEED)
+
