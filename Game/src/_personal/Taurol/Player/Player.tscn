@@ -52,6 +52,7 @@ RUNNING_DECCELERATION = 600
 
 [node name="runMedium" type="Node" parent="StateMachine"]
 script = ExtResource( 13 )
+REACTIVE_DECCEL = true
 MIN_SPEED = 50
 JOGGING_ACCELERATION = 1500
 JOGGING_DECCELERATION = 1200

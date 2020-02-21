@@ -1,6 +1,7 @@
 extends "res://src/_personal/Taurol/Player/States/motion.gd"
 
 
+export var REACTIVE_DECCEL :=false
 export var MAX_SPEED :=300
 export var MIN_SPEED :=0
 export var JOGGING_ACCELERATION := 2000
@@ -47,7 +48,12 @@ func move(input_direction,accel,deccel,delta):
 
 
 func apply_friction(amount):
-	if owner.motion.length()>amount:
+	if REACTIVE_DECCEL:
+		if owner.motion.length()>amount*owner.motion.length():
+			owner.motion-=owner.motion*amount
+		else:
+			owner.motion=Vector2.ZERO
+	elif owner.motion.length()>amount:
 		owner.motion-=owner.motion.normalized()*amount
 	else:
 		owner.motion=Vector2.ZERO
