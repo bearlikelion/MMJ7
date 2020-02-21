@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+export var DefaultRoom = \"\"
+export var ScenesPath = \"\"
+
+func _ready():
+	room.roomPath = ScenesPath
+	room.loadRoomNoSave(DefaultRoom)
+"
+
+[node name="Main" type="Node"]
+pause_mode = 2
+process_priority = 1
+script = SubResource( 1 )
+__meta__ = {
+"_editor_description_": "Put name of a Default scene without .tscn
+To switch between scenes put room.loadRoom(scenename) in to script"
+}
+DefaultRoom = "MovementTest"
+ScenesPath = "src/_personal/Mark/"
