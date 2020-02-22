@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Enemies/Demon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/_personal/Mark/TileMapTest.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Enemies/Turret.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/_personal/Mark/LockedCamera.gd" type="Script" id=5]
+[ext_resource path="res://src/Camera/LockedCamera.gd" type="Script" id=5]
 [ext_resource path="res://src/_personal/Taurol/TestScenes/MovingPlatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/_personal/Taurol/Enviroment/MovingPlatform.gd" type="Script" id=7]
 
