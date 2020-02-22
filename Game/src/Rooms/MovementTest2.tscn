@@ -61,7 +61,6 @@ position = Vector2( 1224, 344 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -1.0
@@ -96,7 +95,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-RoomPath = "TestRoom1"
+RoomPath = "MovementTest"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
 margin_right = 40.0

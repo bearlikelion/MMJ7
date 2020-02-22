@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+signal PausePred
+
+func _ready():
+	connect(\"PausePred\", $CenterContainer/VBoxContainer , \"_pausepred\")
+
+func _pauseEvent():
+	visible = not visible
+	get_tree().paused = visible
+	emit_signal(\"PausePred\", visible)
+	print(get_tree().paused)
+
+func _input(event):
+	if event.is_action_pressed(\"ui_cancel\"):
+		_pauseEvent()
+	
+func _unPause():
+	_pauseEvent()
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends VBoxContainer
+
+signal UnPause
+
+func _ready():
+	
+	connect(\"UnPause\", get_parent().get_parent(), \"_unPause\")
+	
+	var Button1 = load(\"res://src/Hud/Pause/Resume.tscn\")
+	var Button2 = load(\"res://src/Hud/Pause/Options.tscn\")
+	var Button3 = load(\"res://src/Hud/Pause/Exit.tscn\")
+	
+	var B1I = Button1.instance()
+	var B2I = Button2.instance()
+	var B3I = Button3.instance()
+	
+	add_child(B1I)
+	add_child(B2I)
+	add_child(B3I)
+
+func _pausepred(state):
+	$ButtonBase.grab_focus()
+
+func _button_pressed(button):
+	print(\"Pressed: \" + button)
+	
+	if button == \"Resume\":
+		emit_signal(\"UnPause\")
+	elif button == \"Exit\":
+		get_tree().quit()
+"
+
+[node name="PauseBase" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.25098 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -114.0
+margin_top = 197.0
+margin_right = 115.0
+margin_bottom = -197.0
+color = Color( 0, 0, 0, 0.376471 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+mouse_filter = 2
+script = SubResource( 2 )

@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/_personal/RinatSatyl/gradient.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var playerNode
+var playerMaxHp = 0
+export var playerHp = 0
+var heartScene = load(\"res://src/Hud/HudElements/Heart.tscn\")
+
+func _ready():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	focus_mode = Control.FOCUS_NONE
+	if visible == false:
+		visible = true
+	
+func _process(delta):
+	if playerHp > -1:
+		playerNode = get_tree().get_nodes_in_group(\"player\")
+		for node in playerNode:
+			playerHp = node.data.hp
+			playerMaxHp = node.data.maxHp
+			$Label.text = \"Health:\" + str(playerHp) + \"/\" + str(playerMaxHp)
+			if $HBoxContainer.get_child_count() < playerMaxHp:
+				var hearInstance = heartScene.instance()
+				$HBoxContainer.add_child(hearInstance)
+			for i in $HBoxContainer.get_child_count():
+				if i > playerHp - 1:
+					if $HBoxContainer.get_child(i).damage == false:
+						$HBoxContainer.get_child(i).get_node(\"AnimationPlayer\").play(\"Damaged\")
+						$AnimationPlayer.play(\"Damage\")
+				elif i < playerHp + 1:
+					if $HBoxContainer.get_child(i).damage == true:
+						$HBoxContainer.get_child(i).get_node(\"AnimationPlayer\").play(\"Appear\")
+"
+
+[sub_resource type="Animation" id=2]
+resource_name = "Damage"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 4, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.32549 ), Color( 0, 0, 0, 0.458824 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Normal"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends AnimationPlayer
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == \"Damage\":
+		play(\"Normal\")
+"
+
+[node name="HudBase" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.25098 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 992.0
+margin_bottom = 56.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 26.4777
+margin_top = 14.5897
+margin_right = 66.4777
+margin_bottom = 28.5897
+text = "Health"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 2 )
+anims/Normal = SubResource( 3 )
+script = SubResource( 4 )
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_AnimationPlayer_animation_finished"]
