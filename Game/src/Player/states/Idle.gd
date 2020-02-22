@@ -9,10 +9,10 @@ func enter():
 func exit():
 	pass
 
-func update(delta):
-	if player.velocity != Vector2.ZERO:
-		if player.is_running:
-			state_machine.change_state("Run")
-		else:
-			state_machine.change_state("Walk")
+func update(_delta):
+	# if player.velocity != Vector2.ZERO:
+	# 	if player.is_running:
+	# 		state_machine.change_state("Run")
+	# 	else:
+	# 		state_machine.change_state("Walk")
 	pass
