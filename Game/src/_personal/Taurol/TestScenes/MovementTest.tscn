@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/_personal/Taurol/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Enemies/Demon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/_personal/Mark/TileMapTest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Enemies/Turret.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/_personal/Mark/LockedCamera.gd" type="Script" id=5]
+
+[node name="MovementTest" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource( 3 )]
+
+[node name="LockedCamera" type="Camera2D" parent="."]
+visible = false
+current = true
+smoothing_enabled = true
+script = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 492.131, 366.94 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Turret" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 511.326, -312 )
+
+[node name="Demon" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1144, -400 )
+
+[node name="Turret2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1648, -152 )
+projectile_speed = 75
+
+[node name="Turret3" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1240, 168 )
+projectile_speed = 250
+
+[node name="Demon2" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1600, 232 )
+
+[node name="Demon3" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1224, 344 )
