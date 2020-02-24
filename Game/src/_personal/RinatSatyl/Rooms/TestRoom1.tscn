@@ -14,6 +14,7 @@ position = Vector2( 0, -1 )
 [node name="TileMap" parent="." instance=ExtResource( 6 )]
 
 [node name="LockedCamera" parent="." instance=ExtResource( 8 )]
+anchor_mode = 0
 
 [node name="Player" parent="." groups=[
 "save",

@@ -7,9 +7,9 @@ export var DefaultRoom = \"\"
 export var ScenesPath = \"\"
 
 func _ready():
-	get_tree().paused = false
-	room.roomPath = ScenesPath
-	room.loadRoomNoSave(DefaultRoom)
+    get_tree().paused = false
+    room.roomPath = ScenesPath
+    room.loadRoomNoSave(DefaultRoom)
 "
 
 [node name="Main" type="Node"]
