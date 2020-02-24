@@ -1,6 +1,7 @@
 extends "res://src/_personal/Taurol/Player/States/Move.gd"
 
 
+export var ENDING_SPEED=50
 export var DURATION:=0.1
 export(NodePath) var RAYCASTS
 
@@ -58,3 +59,4 @@ func _on_timer_timeout():
 func exit():
 	timer.stop()
 	owner.modulate=Color(1,1,1,1)
+	owner.motion=owner.motion.normalized()*ENDING_SPEED
