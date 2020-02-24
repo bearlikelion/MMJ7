@@ -5,8 +5,8 @@ var game_save_path : String = "save/"
 var testVar
 
 func _ready():
-	pass 
-	
+	pass
+
 func save(savefile):
 	room.saveRoom(room.roomPrevious)
 	var file = File.new()
@@ -20,18 +20,18 @@ func save(savefile):
 	saveData["roomState"] = room.roomState
 	file.store_line(to_json(saveData))
 	file.close()
-	
+
 func load(savefile):
 	var file = File.new()
 	var saveName = "Save_" + str(savefile)
 	if file.file_exists("user://" + saveName + ".dat") == true:
 		file.open("user://" + saveName + ".dat", File.READ)
-	var content = file.get_as_text()
+	var _content = file.get_as_text()
 	var roomToLoad
-	
+
 	while not file.eof_reached():
 		var current_line = parse_json(file.get_line())
-		
+
 		if current_line == null:
 			continue
 		testVar = current_line
