@@ -15,6 +15,7 @@ func update(delta):
 	del=delta
 	.update(delta)
 
+
 func apply_movement(accel):
 	if !Input.is_action_pressed("sprint"):
 		apply_friction(JOGGING_COUNTER_ACCELERATION*del)

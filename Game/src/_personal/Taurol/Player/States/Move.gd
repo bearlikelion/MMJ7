@@ -1,32 +1,18 @@
 extends "res://src/_personal/Taurol/Player/States/motion.gd"
 
 export var MAX_SPEED :=300
-export var ACCELERATION := 2000
-export var DECCELERATION:= 1000
 
 
 func enter():
 	var input_direction = get_input_direction()
 	update_look_direction(input_direction)
-	#owner.get_node("AnimationPlayer").play("walk")
 
 
-func update(delta):
-	if Input.is_action_pressed("sprint"):
-		emit_signal("finished","sprint")
-	var input_direction = get_input_direction()
-	if not input_direction:
-		if owner.motion==Vector2.ZERO:
-			emit_signal("finished", "idle")
-	
-	move(input_direction,delta)
-
-
-func move(input_direction,delta):
+func move(input_direction,accel,deccel,delta):
 	if input_direction==Vector2.ZERO:
-		apply_friction(DECCELERATION*delta)
+		apply_friction(deccel*delta)
 	else:
-		apply_movement(input_direction*ACCELERATION*delta)
+		apply_movement(input_direction*accel*delta)
 	
 	update_look_direction(input_direction)
 	
@@ -41,5 +27,5 @@ func apply_friction(amount):
 
 
 func apply_movement(accel):
-	owner.motion+=accel
-	owner.motion=owner.motion.clamped(MAX_SPEED)
+		owner.motion+=accel
+		owner.motion=owner.motion.clamped(MAX_SPEED)
