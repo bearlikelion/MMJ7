@@ -44,8 +44,13 @@ script = ExtResource( 3 )
 
 [node name="runSlow" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
+<<<<<<< Updated upstream
 REACTIVE_DECCEL = true
 MAX_SPEED = 120
+=======
+MAX_SPEED = 120
+REACTIVE_DECCEL = true
+>>>>>>> Stashed changes
 JOGGING_DECCELERATION = 10
 RUNNING_ACCELERATION = 900
 RUNNING_DECCELERATION = 4
