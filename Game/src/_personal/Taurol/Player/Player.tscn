@@ -99,19 +99,24 @@ texture = ExtResource( 1 )
 anims/Hurt = SubResource( 2 )
 
 [node name="raycasts" type="Node2D" parent="."]
+position = Vector2( 0, 3.99564 )
 
 [node name="south_cast" type="RayCast2D" parent="raycasts"]
 enabled = true
+cast_to = Vector2( 0, 12 )
 
 [node name="east_cast" type="RayCast2D" parent="raycasts"]
 rotation = 1.5708
 enabled = true
+cast_to = Vector2( 0, 12 )
 
 [node name="north_cast" type="RayCast2D" parent="raycasts"]
 rotation = 3.14159
 enabled = true
+cast_to = Vector2( 0, 12 )
 
 [node name="west_cast" type="RayCast2D" parent="raycasts"]
 rotation = -1.5708
 enabled = true
+cast_to = Vector2( 0, 12 )
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine" method="_on_AnimationPlayer_animation_finished"]

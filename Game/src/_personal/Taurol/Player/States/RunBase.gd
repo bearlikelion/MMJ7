@@ -8,6 +8,9 @@ export var JOGGING_DECCELERATION:= 1000
 export var RUNNING_ACCELERATION := 2000
 export var RUNNING_DECCELERATION:= 1000
 
+func enter():
+	owner.on_ground=true
+	.enter()
 
 func update(delta):
 	
@@ -38,3 +41,4 @@ func apply_friction(amount):
 		owner.motion-=owner.motion.normalized()*amount
 	else:
 		owner.motion=Vector2.ZERO
+

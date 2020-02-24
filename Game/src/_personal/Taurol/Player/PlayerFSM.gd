@@ -11,7 +11,6 @@ func _ready():
 		"runFast": $runFast,
 		"jump": $Jump,
 		"sidestep":$SideStep,
-		"davsidestep":$DaVSideStep,
 		"wallrun":$wallRun,
 		"hurt": $Hurt,
 		"shoot": $Shoot,
@@ -22,10 +21,10 @@ func _input(event):
 	if event is InputEventKey:
 		if event.scancode==KEY_T and !event.pressed:
 			_change_state("jump")
-		if event.scancode==KEY_Y and !event.pressed:
+		if event.scancode==KEY_Q and !event.pressed:
 			_change_state("sidestep")
-		if event.scancode==KEY_Q and !event.pressed and current_state.get_name()!="SideStep":
-			_change_state("davsidestep")
+		#if event.scancode==KEY_Q and !event.pressed and current_state.get_name()!="SideStep":
+		#	_change_state("davsidestep")
 	._input(event)
 		
 	._input(event)

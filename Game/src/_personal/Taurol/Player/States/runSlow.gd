@@ -7,6 +7,7 @@ var offset:int=5
 func update(delta):
 	if owner.motion.length()>MAX_SPEED+offset:
 		emit_signal("finished","runMedium")
+		return
 		
 	#print(owner.motion)
 	.update(delta)

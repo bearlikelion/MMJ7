@@ -1,12 +1,14 @@
-extends "res://src/_personal/Taurol/Player/States/motion.gd"
+extends "res://src/_personal/Taurol/Player/States/Move.gd"
 
-export var MAX_SPEED :=200
+
 export var ACCELERATION := 2000
 export var DECCELERATION:= 3000
 export var DURATION:=1
 
 
 var timer :=Timer.new()
+var mov_direction  :=Vector2.ZERO
+var wall_normal:= Vector2.ZERO 
 
 
 func _ready():
@@ -16,10 +18,11 @@ func _ready():
 
 
 func enter():
-	owner.motion = Vector2.ZERO 
-	owner.look_direction = Vector2(owner.look_direction.x*-1,0)
-	#if owner.look_direction.x != 0:
-	#	owner.get_node("Sprite").set_scale(Vector2(owner.look_direction.x, 1))
+	owner.on_ground=false
+	
+	wall_normal = owner.wall_raycast.get_collision_normal()
+	mov_direction  =-owner.motion.reflect(wall_normal).normalized()
+	
 	match owner.wall_dir:
 		0:
 			print("0")
@@ -30,43 +33,23 @@ func enter():
 		3:
 			print("3")
 	timer.start()
+	.enter()
 
 
 func exit():
 	timer.stop()
+	owner.on_ground=true
 
 
 func update(delta):
-	var wall_normal: Vector2 = owner.wall_raycast.get_collision_normal()
-	var input_direction = get_input_direction()
-    
-	if input_direction:
-		print("exit")
+	
+	var input_direction = get_input_direction()  
+	if (abs(input_direction.angle_to(wall_normal))<PI/2 and input_direction!=Vector2.ZERO) or !owner.wall_raycast.is_colliding():
 		emit_signal("finished", "runSlow")
+		return
 	else:
-		move(wall_normal, delta)
+		move(mov_direction, delta,ACCELERATION,DECCELERATION)
     
-    
-func move(input_direction,delta):
-	if input_direction==Vector2.ZERO:
-		apply_friction(DECCELERATION*delta)
-	else:
-		apply_movement(input_direction*ACCELERATION*delta)
-	update_look_direction(input_direction)
-	owner.motion=owner.move_and_slide(owner.motion)
-
-
-func apply_friction(amount):
-	if owner.motion.length()>amount:
-		owner.motion-=owner.motion.normalized()*amount
-	else:
-		owner.motion=Vector2.ZERO
-
-
-func apply_movement(accel):
-	owner.motion+=accel
-	owner.motion=owner.motion.clamped(MAX_SPEED)
-
 
 func _on_timer_timeout():
 	emit_signal("finished", "runSlow")

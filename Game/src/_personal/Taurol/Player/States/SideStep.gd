@@ -10,6 +10,8 @@ var DECCELERATION:= 300
 
 
 func _ready():
+	for raycast in get_node(RAYCASTS).get_children():
+		raycast.add_exception(owner)
 	add_child(timer)
 	timer.wait_time=DURATION
 	timer.connect("timeout",self,"_on_timer_timeout")
@@ -21,6 +23,8 @@ func enter():
 		return
 	owner.motion=owner.motion.normalized()*MAX_SPEED
 	timer.start()
+	owner.modulate=Color.brown
+	.enter()
 
 
 func update(delta):
@@ -30,7 +34,6 @@ func update(delta):
 			print(raycast.get_collider())
 			if raycast.get_collider().is_in_group("walls"):
 				owner.wall_raycast = raycast
-				print(owner.wall_raycast)
 				match raycast.name:
 					"south_cast":
 						owner.wall_dir = owner.WallDirections.SOUTH
@@ -54,4 +57,4 @@ func _on_timer_timeout():
 
 func exit():
 	timer.stop()
-	print("exit sidestep state")
+	owner.modulate=Color(1,1,1,1)

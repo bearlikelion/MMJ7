@@ -9,6 +9,7 @@ var del:=0.0
 func update(delta):
 	if owner.motion.length()<=MIN_SPEED:
 		emit_signal("finished","runMedium")
+		return
 	del=delta
 	.update(delta)
 

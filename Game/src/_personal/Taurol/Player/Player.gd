@@ -19,3 +19,6 @@ var wall_raycast: Node
 
 func _ready():
 	pass # Replace with function body.
+
+func _process(delta):
+	motion=move_and_slide(motion)
