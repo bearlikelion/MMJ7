@@ -7,25 +7,25 @@ var speed = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    if !speed:        
-        speed = default_speed
-        
-    set_as_toplevel(true)    
+	if !speed:        
+		speed = default_speed
+		
+	set_as_toplevel(true)    
 
 
 func _physics_process(_delta) -> void:
-    if direction:        
-        var _velocity = move_and_slide(direction * speed)    
+	if direction:        
+		var _velocity = move_and_slide(direction * speed)    
 
 
 func _on_Area2D_body_entered(body) -> void:    
-    match body.name:
-        "Player":
-            # TODO: Damage Player
-            print("damage player")
-            queue_free()
-        "TileMap":        
-            queue_free()
+	match body.name:
+		"Player":
+			# TODO: Damage Player
+			body.data.hp = max(0, body.data.hp - 1)
+			queue_free()
+		"TileMap":        
+			queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
-    queue_free()
+	queue_free()

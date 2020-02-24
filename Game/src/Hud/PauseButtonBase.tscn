@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Hud/Pause/PauseTheme.tres" type="Theme" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+export var Function = \"\"
+signal ButtonPressed
+var chacheText = \"\"
+
+func _ready():
+	connect(\"ButtonPressed\", get_parent(), \"_button_pressed\")
+	connect(\"focus_entered\", self, \"_inFocus\")
+	connect(\"focus_exited\", self, \"_OutOfFocus\")
+	connect(\"mouse_entered\", self, \"_inFocusMouse\")
+	connect(\"mouse_exited\", self, \"_OutOfFocusMouse\")
+	chacheText = $Label.text
+	
+func _on_ButtonBase_pressed():
+	emit_signal(\"ButtonPressed\", Function)	
+
+func _inFocus():
+	$Label.text = chacheText
+	$Label.text = chacheText + \" FOCUSED\"
+
+func _inFocusMouse():
+	$Label.text = chacheText
+	$Label.text = chacheText + \" FOCUSED\"
+	
+func _OutOfFocus():
+	$Label.text = chacheText
+	
+func _OutOfFocusMouse():
+	$Label.text = chacheText
+"
+
+[node name="ButtonBase" type="Button"]
+margin_right = 240.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 240, 32 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+custom_styles/focus = SubResource( 2 )
+flat = true
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "My sweet button"
+align = 1
+valign = 1
+[connection signal="pressed" from="." to="." method="_on_ButtonBase_pressed"]
