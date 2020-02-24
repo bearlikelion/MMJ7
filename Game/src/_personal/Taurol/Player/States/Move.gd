@@ -1,34 +1,32 @@
 extends "res://src/_personal/Taurol/Player/States/motion.gd"
 
-
-# Declare member variables here. Examples:
-var speed:=0.0
-var velocity:=Vector2()
+export var MAX_SPEED :=300
 
 
-# Called when the node enters the scene tree for the first time.
 func enter():
-	speed = 0.0
-	velocity = Vector2()
 	var input_direction = get_input_direction()
 	update_look_direction(input_direction)
-	#owner.get_node("AnimationPlayer").play("walk")
 
-func update(delta):
-	var input_direction = get_input_direction()
-	if not input_direction:
-		emit_signal("finished", "idle")
+
+func move(input_direction,accel,deccel,delta):
+	if input_direction==Vector2.ZERO:
+		apply_friction(deccel*delta)
+	else:
+		apply_movement(input_direction*accel*delta)
+	
 	update_look_direction(input_direction)
 	
-	speed=200
-	move(speed,get_input_direction())
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	#owner.motion=owner.move_and_slide(owner.motion)
 
 
-func move(speed,direction):
-	velocity = direction.normalized() * speed
-	owner.move_and_slide(velocity)
-	if owner.get_slide_count() == 0:
-		return
-	return owner.get_slide_collision(0)
+func apply_friction(amount):
+	if owner.motion.length()>amount:
+		owner.motion-=owner.motion.normalized()*amount
+	else:
+		owner.motion=Vector2.ZERO
+		
 
+
+func apply_movement(accel):
+		owner.motion+=accel
+		owner.motion=owner.motion.clamped(MAX_SPEED)

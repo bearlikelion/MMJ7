@@ -2,7 +2,9 @@
 
 [ext_resource path="res://assets/Tileset/temp_dungeon_tileset.tres" type="TileSet" id=1]
 
-[node name="TileMap" type="TileMap"]
+[node name="TileMap" type="TileMap" groups=[
+"walls",
+]]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1

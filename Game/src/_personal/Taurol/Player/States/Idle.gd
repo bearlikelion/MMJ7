@@ -7,12 +7,13 @@ extends "res://src/_personal/Taurol/Player/States/motion.gd"
 
 
 func enter():
-	pass
+	#print("Idle")
+	#print(owner.motion)
 	#owner.get_node("AnimationPlayer").play("idle")
+	pass
 
 
 func update(delta):
-	
 	var input_direction = get_input_direction()
-	if input_direction:
-		emit_signal("finished", "move")
+	if input_direction!=Vector2.ZERO:
+		emit_signal("finished", "runSlow")
