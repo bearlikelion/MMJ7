@@ -45,34 +45,36 @@ script = ExtResource( 3 )
 
 [node name="runSlow" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
-MAX_SPEED = 80
-JOGGING_ACCELERATION = 200
-JOGGING_DECCELERATION = 300
-RUNNING_ACCELERATION = 400
-RUNNING_DECCELERATION = 400
+MAX_SPEED = 120
+REACTIVE_DECCEL = true
+JOGGING_DECCELERATION = 10
+RUNNING_ACCELERATION = 800
+RUNNING_DECCELERATION = 4
 
 [node name="runMedium" type="Node" parent="StateMachine"]
 script = ExtResource( 13 )
 MAX_SPEED = 200
-MIN_SPEED = 80
-JOGGING_ACCELERATION = 600
-JOGGING_DECCELERATION = 400
-RUNNING_ACCELERATION = 800
-RUNNING_DECCELERATION = 600
-JOGGING_COUNTER_ACCELERATION = 700
+MIN_SPEED = 120
+JOGGING_ACCELERATION = 1500
+JOGGING_DECCELERATION = 1750
+RUNNING_ACCELERATION = 650
+RUNNING_DECCELERATION = 200
+JOGGING_COUNTER_ACCELERATION = 1750
 
 [node name="runFast" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
 MAX_SPEED = 500
 MIN_SPEED = 200
-JOGGING_DECCELERATION = 2000
-RUNNING_ACCELERATION = 2199
-RUNNING_DECCELERATION = 3000
-JOGGING_COUNTER_ACCELERATION = 2200
+JOGGING_ACCELERATION = 1000
+JOGGING_DECCELERATION = 1500
+RUNNING_ACCELERATION = 500
+RUNNING_DECCELERATION = 800
+JOGGING_COUNTER_ACCELERATION = 1500
 
 [node name="SideStep" type="Node" parent="StateMachine"]
 script = ExtResource( 11 )
-MAX_SPEED = 700
+MAX_SPEED = 500
+DURATION = 0.2
 RAYCASTS = NodePath("../../raycasts")
 
 [node name="wallRun" type="Node" parent="StateMachine"]
@@ -84,6 +86,7 @@ script = ExtResource( 7 )
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
 ACCELERATION = 1000
+DURATION = 0.1
 
 [node name="Shoot" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )

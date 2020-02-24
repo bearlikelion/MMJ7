@@ -16,7 +16,7 @@ func move(input_direction,accel,deccel,delta):
 	
 	update_look_direction(input_direction)
 	
-	#owner.motion=owner.move_and_slide(owner.motion)
+	owner.motion=owner.move_and_slide(owner.motion)
 
 
 func apply_friction(amount):
