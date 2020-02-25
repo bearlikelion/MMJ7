@@ -74,7 +74,6 @@ JOGGING_COUNTER_ACCELERATION = 1500
 [node name="SideStep" type="Node" parent="StateMachine"]
 script = ExtResource( 11 )
 MAX_SPEED = 700
-DURATION = 0.1
 RAYCASTS = NodePath("../../raycasts")
 
 [node name="wallRun" type="Node" parent="StateMachine"]

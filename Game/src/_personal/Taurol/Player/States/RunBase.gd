@@ -21,10 +21,10 @@ func update(delta):
 		if owner.motion==Vector2.ZERO:
 			emit_signal("finished", "idle")
 	
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("action_run"):
 		accel=RUNNING_ACCELERATION
 		deccel=RUNNING_DECCELERATION
-	if !Input.is_action_pressed("sprint"):
+	if !Input.is_action_pressed("action_run"):
 		accel=JOGGING_ACCELERATION
 		deccel=JOGGING_DECCELERATION
 	
