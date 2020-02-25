@@ -6,4 +6,4 @@ func enter():
 	owner.get_node("AnimationPlayer").play("Hurt")
 
 func _on_animation_finished(anim_name):
-	emit_signal("finished", "previous")
+	emit_signal("finished", "runSlow")
