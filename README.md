@@ -19,7 +19,6 @@ A metroidvania game developed in one month (Feb 15th - Mar 15th)
 |DaVincino789 | Lead Developer
 |Marx | Development
 |Rinat Satybaldinov | Development
-|Rinia | Development
 |Taurol | Development
 |TheBoog | Design
 |Senpai | Design
