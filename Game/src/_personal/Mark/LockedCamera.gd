@@ -37,4 +37,4 @@ func calculate_grid_position() -> Vector2:
 
 func jump_to_grid_position() -> void:        
     var move_to = grid_position * grid_size - camera_offset        
-    self.position = Vector2(move_to)
+    self.position = move_to
