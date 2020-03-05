@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{29cd2894-d767-4a94-a0a6-0536a531efd8}">
+		<property name="assetPath">
+			<value>MetroidVaniaDemoLayer2A&amp;B.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>96</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b83368a0-7f61-4b56-bd8c-a8b28fe37d26}</destination>
+		</relationship>
+	</object>
+</objects>

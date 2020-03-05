@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MetroidVaniaDemoLayer3A&B.wav-ce313f2dc0616ab9ed7193a37970f256.sample"
+
+[deps]
+
+source_file="res://src/_personal/RinatSatyl/fmod_test/Assets/MetroidVaniaDemoLayer3A&B.wav"
+dest_files=[ "res://.import/MetroidVaniaDemoLayer3A&B.wav-ce313f2dc0616ab9ed7193a37970f256.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

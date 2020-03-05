@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "",
+"class": "FmodNative",
+"language": "NativeScript",
+"path": "res://addons/fmod/Fmod.gdns"
+}, {
+"base": "Area2D",
+"class": "MovingPlatform",
+"language": "GDScript",
+"path": "res://src/_personal/Taurol/Enviroment/MovingPlatform.gd"
+} ]
 _global_script_class_icons={
-
+"FmodNative": "",
+"MovingPlatform": ""
 }
 
 [application]
@@ -23,6 +34,7 @@ config/icon="res://assets/icon.png"
 
 room="*res://src/Systems/RoomsSystem.gd"
 save="*res://src/Systems/SaveSystem.gd"
+fmod="*res://src/Systems/fmod.gd"
 
 [display]
 
@@ -63,6 +75,11 @@ action_run={
 action_jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+simulate_damage={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":46,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -17,6 +17,7 @@ var data = {
 
 func _ready() -> void:
 	$States.start()
+	Fmod.system_add_listener(self)
 	pass
 
 func _physics_process(_delta) -> void:

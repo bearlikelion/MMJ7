@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 
+
 enum WallDirections {
 	NORTH,
 	SOUTH,
@@ -22,3 +23,6 @@ func _ready():
 
 func _process(delta):
 	motion=move_and_slide(motion)
+
+func damage():
+	pass

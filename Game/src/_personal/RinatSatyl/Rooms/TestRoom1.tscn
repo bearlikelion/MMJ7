@@ -1,40 +1,100 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://src/_personal/RinatSatyl/Rooms/Hud.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/_personal/Mark/TileMapTest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Camera/LockedCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Enemies/Turret.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Enemies/Demon.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/_personal/Mark/TileMapTest.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/Camera/LockedCamera.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/_personal/RinatSatyl/Rooms/Pause.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/_personal/RinatSatyl/Rooms/Hud.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/_personal/RinatSatyl/Rooms/Pause.tscn" type="PackedScene" id=7]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var ac1 = 0
+var ac2 = 1
+var my_music_event = Fmod.create_event_instance(\"event:/DemoLevel\")
+
+func _ready():
+	Fmod.event_start(my_music_event)
+	
+func _on_pressed(what, which):
+	if which == 1:
+		if what == true:
+			ac1 += 0.2
+		else:
+			ac1 -= 0.2
+	elif which == 2:
+		if what == true:
+			ac2 += 0.2
+		else:
+			ac2 -= 0.2
+	Fmod.event_set_parameter(my_music_event, \"ActionLayer1\", ac1)
+	Fmod.event_set_parameter(my_music_event, \"ActionLayer2\", ac2)"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", get_parent().get_parent().get_parent(), \"_on_pressed\")
+	
+func _on_Button_pressed():
+	emit_signal(\"pressed\", true, 1)
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", get_parent().get_parent().get_parent(), \"_on_pressed\")
+	
+func _on_Button2_pressed():
+	emit_signal(\"pressed\", false, 1)
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", get_parent().get_parent().get_parent(), \"_on_pressed\")
+
+func _on_Button4_pressed():
+	emit_signal(\"pressed\", true, 2)
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", get_parent().get_parent().get_parent(), \"_on_pressed\")
+	
+func _on_Button3_pressed():
+	emit_signal(\"pressed\", false, 2)
+"
 
 [node name="MovementTest" type="Node2D"]
 position = Vector2( 0, -1 )
+script = SubResource( 1 )
 
-[node name="TileMap" parent="." instance=ExtResource( 6 )]
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
 
-[node name="LockedCamera" parent="." instance=ExtResource( 8 )]
+[node name="LockedCamera" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." groups=[
 "save",
-] instance=ExtResource( 7 )]
+] instance=ExtResource( 3 )]
 position = Vector2( 511.603, 300 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Turret" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 58.6835, 76.1245 )
+position = Vector2( 59.6335, 76.1245 )
 projectile_speed = 225
 
 [node name="Demon" parent="Enemies" groups=[
 "save",
 ] instance=ExtResource( 5 )]
 position = Vector2( 638, 140 )
-
-[node name="Demon4" parent="Enemies" groups=[
-"save",
-] instance=ExtResource( 5 )]
-position = Vector2( 694.12, 355.847 )
 
 [node name="Turret2" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 1648, -152 )
@@ -52,8 +112,68 @@ position = Vector2( 1224, 344 )
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
-[node name="HudBase" parent="Overlay" instance=ExtResource( 1 )]
+[node name="HudBase" parent="Overlay" instance=ExtResource( 6 )]
 visible = false
 
-[node name="PauseBase" parent="Overlay" instance=ExtResource( 9 )]
+[node name="PauseBase" parent="Overlay" instance=ExtResource( 7 )]
 visible = false
+
+[node name="TestButtons" type="Control" parent="Overlay"]
+margin_left = 19.453
+margin_top = 59.9802
+margin_right = 59.453
+margin_bottom = 99.9802
+
+[node name="Label" type="Label" parent="Overlay/TestButtons"]
+margin_left = 22.0872
+margin_top = 7.41
+margin_right = 105.087
+margin_bottom = 21.41
+text = "ActionLayer1"
+
+[node name="Button" type="Button" parent="Overlay/TestButtons"]
+margin_left = 21.0
+margin_top = 24.0
+margin_right = 68.0
+margin_bottom = 77.0
+text = "+"
+script = SubResource( 2 )
+
+[node name="Button2" type="Button" parent="Overlay/TestButtons"]
+margin_left = 74.0
+margin_top = 24.7962
+margin_right = 127.0
+margin_bottom = 74.7962
+text = "-"
+script = SubResource( 3 )
+
+[node name="Label2" type="Label" parent="Overlay/TestButtons"]
+margin_left = 22.686
+margin_top = 84.0486
+margin_right = 105.686
+margin_bottom = 98.0486
+text = "ActionLayer2"
+
+[node name="Button4" type="Button" parent="Overlay/TestButtons"]
+margin_left = 19.8624
+margin_top = 101.926
+margin_right = 66.8624
+margin_bottom = 154.926
+text = "+"
+script = SubResource( 5 )
+
+[node name="Button3" type="Button" parent="Overlay/TestButtons"]
+margin_left = 73.4013
+margin_top = 104.428
+margin_right = 126.401
+margin_bottom = 154.428
+text = "-"
+script = SubResource( 4 )
+[connection signal="pressed" from="Overlay/TestButtons/Button" to="Overlay/TestButtons/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Overlay/TestButtons/Button2" to="Overlay/TestButtons/Button2" method="_on_Button_pressed"]
+[connection signal="pressed" from="Overlay/TestButtons/Button2" to="Overlay/TestButtons/Button2" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Overlay/TestButtons/Button4" to="Overlay/TestButtons/Button4" method="_on_Button_pressed"]
+[connection signal="pressed" from="Overlay/TestButtons/Button4" to="Overlay/TestButtons/Button4" method="_on_Button4_pressed"]
+[connection signal="pressed" from="Overlay/TestButtons/Button3" to="Overlay/TestButtons/Button3" method="_on_Button_pressed"]
+[connection signal="pressed" from="Overlay/TestButtons/Button3" to="Overlay/TestButtons/Button3" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Overlay/TestButtons/Button3" to="Overlay/TestButtons/Button3" method="_on_Button3_pressed"]

@@ -14,7 +14,6 @@ func _ready():
 
 [node name="Main" type="Node"]
 pause_mode = 1
-process_priority = 1
 script = SubResource( 1 )
 __meta__ = {
 "_editor_description_": "Put name of a Default scene without .tscn
