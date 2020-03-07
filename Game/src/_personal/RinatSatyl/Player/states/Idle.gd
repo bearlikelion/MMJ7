@@ -4,8 +4,7 @@ onready var state_machine = get_parent()
 onready var player = state_machine.get_parent()
 
 func enter():
-	player.velocity = Vector2.ZERO
-	player.velocity = player.velocity.normalized() * player.speed
+	pass
 
 func exit():
 	pass

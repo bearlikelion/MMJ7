@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/_personal/RinatSatyl/Enemies/ChasePlayer.gd" type="Script" id=1]
+[ext_resource path="res://assets/Sprites/temp_demon.png" type="Texture" id=2]
+[ext_resource path="res://src/states.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node
+
+onready var state_machine = get_parent()
+onready var enemy = state_machine.get_parent()
+
+func enter():
+	enemy.velocity = Vector2.ZERO
+	enemy.velocity = enemy.velocity.normalized() * enemy.speed
+
+func exit():
+	pass
+
+func update(_delta):
+	if enemy.player != null:
+		state_machine.change_state(\"Chase\")
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node
+
+onready var state_machine = get_parent()
+onready var enemy = state_machine.get_parent()
+
+func enter():
+	pass
+
+func exit():
+	pass
+
+func update(_delta):
+	enemy.velocity = Vector2.ZERO
+	if enemy.player:
+		enemy.velocity = enemy.position.direction_to(enemy.player.position) * enemy.speed
+	else:
+		state_machine.change_state(\"Idle\")
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Node
+
+onready var state_machine = get_parent()
+onready var enemy = state_machine.get_parent()
+onready var timer = 0.3
+onready var playerPos = Vector2.ZERO
+
+func enter():
+	timer = 0.3
+	enemy.data.hp -= 1
+
+func exit():
+	pass
+
+func update(_delta):
+	if timer > 0:
+		timer -= _delta*1
+		if enemy.player:
+			playerPos = enemy.player.position
+		enemy.velocity = playerPos.direction_to(enemy.position) * enemy.speed*2
+	else:
+		state_machine.change_state(\"Idle\")"
+
+[node name="Demon" type="KinematicBody2D" groups=[
+"enemy",
+]]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AgroRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRadius"]
+scale = Vector2( 15, 15 )
+shape = SubResource( 2 )
+
+[node name="States" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Idle" type="Node" parent="States"]
+script = SubResource( 3 )
+
+[node name="Chase" type="Node" parent="States"]
+script = SubResource( 4 )
+
+[node name="Damage" type="Node" parent="States"]
+script = SubResource( 5 )
+[connection signal="body_entered" from="AgroRadius" to="." method="_on_AgroRadius_body_entered"]
+[connection signal="body_exited" from="AgroRadius" to="." method="_on_AgroRadius_body_exited"]
+[connection signal="state_changed" from="States" to="." method="_on_States_state_changed"]

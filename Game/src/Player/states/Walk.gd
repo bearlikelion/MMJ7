@@ -10,8 +10,24 @@ func exit():
 	pass
 
 func update(_delta):
-	# if player.is_running:
-	# 	state_machine.change_state("Run")
-	# if player.velocity == Vector2.ZERO:
-	# 	state_machine.change_state("Idle")
-	pass
+	player.velocity = Vector2.ZERO
+
+	if Input.is_action_pressed('up'):
+		player.velocity.y -= 1
+		player.dir = "up"
+	if Input.is_action_pressed('down'):
+		player.velocity.y += 1
+		player.dir = "down"
+	if Input.is_action_pressed('left'):
+		player.velocity.x -= 1
+		player.dir = "left"
+	if Input.is_action_pressed('right'):
+		player.velocity.x += 1
+		player.dir = "right"
+		
+	if player.velocity == Vector2.ZERO:
+		state_machine.change_state("Idle")
+		
+	# Normalize so diagonal movement isn't faster
+	player.velocity = player.velocity.normalized() * player.speed
+

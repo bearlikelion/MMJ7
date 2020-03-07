@@ -22,7 +22,7 @@ func _on_Area2D_body_entered(body) -> void:
 	match body.name:
 		"Player":
 			# TODO: Damage Player
-			body.damage()
+			#body.damage()
 			queue_free()
 		"TileMap":        
 			queue_free()

@@ -20,8 +20,8 @@ func start() -> void:
     get_states_nodes();
     if states['Idle']:
         change_state('Idle');
-    else:
-        print("No idle state")
+    #else:
+        #print("No idle state")
 
 
 func get_states_nodes() -> void:
@@ -33,7 +33,7 @@ func get_states_nodes() -> void:
 
 
 func _physics_process(delta) -> void:
-    current_state.update(delta);
+	current_state.update(delta);
 
 
 func change_state(state_name) -> void:

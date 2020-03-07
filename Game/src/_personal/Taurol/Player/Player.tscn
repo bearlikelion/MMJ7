@@ -37,6 +37,7 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 2 )
 START_STATE = NodePath("Idle")
 
@@ -102,6 +103,7 @@ texture = ExtResource( 12 )
 anims/Hurt = SubResource( 2 )
 
 [node name="raycasts" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, 3.99564 )
 
 [node name="south_cast" type="RayCast2D" parent="raycasts"]

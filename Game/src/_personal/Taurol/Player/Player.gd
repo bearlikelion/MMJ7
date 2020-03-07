@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+var data = {
+	"pos_x": position.x,
+	"pos_y": position.y,
+	"hp": 10,
+	"maxHp": 10,
+	}
 
 
 enum WallDirections {

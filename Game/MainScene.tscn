@@ -20,4 +20,4 @@ __meta__ = {
 To switch between scenes put room.loadRoom(scenename) in to script"
 }
 DefaultRoom = "TestRoom1"
-ScenesPath = "src/_personal/RinatSatyl/Rooms/"
+ScenesPath = "/src/_personal/RinatSatyl/Rooms/"

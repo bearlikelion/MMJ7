@@ -1,14 +1,12 @@
 extends KinematicBody2D
 
 export (int) var speed = 200
-export var dir = "left"
-export var kickSpeed = 0.1
-export var isLoaded = false
 
 var velocity := Vector2.ZERO
 var input_axes := Vector2.ZERO
 var is_running := false
 var queued_action
+export var isLoaded = false
 var data = {
 	"pos_x": position.x,
 	"pos_y": position.y,
@@ -24,28 +22,43 @@ func _ready() -> void:
 
 func _physics_process(_delta) -> void:
 	add_to_group("player")
+	get_input()
 	handle_states()
 	velocity = move_and_slide(velocity)
-	$Debug.get_node("Label").text = dir
-	$Debug.get_node("Label2").text = $States.current_state.name
-	
+
+func get_input() -> void:
+	velocity = Vector2.ZERO
+
 	input_axes.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input_axes.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	input_axes = (input_axes.normalized()).clamped(1)
-	
+
+	if Input.is_action_pressed('up'):
+		velocity.y -= 1
+	if Input.is_action_pressed('down'):
+		velocity.y += 1
+	if Input.is_action_pressed('left'):
+		velocity.x -= 1
+	if Input.is_action_pressed('right'):
+		velocity.x += 1
+
+	if Input.is_action_just_pressed("ui_accept") and data.hp < data.maxHp:
+		data.hp += 1
+
+	# Normalize so diagonal movement isn't faster
+	velocity = velocity.normalized() * speed
+
 
 func handle_states() -> void:
-	if input_axes != Vector2.ZERO and $States.current_state.name != "Kick":
-		if Input.is_action_pressed("action_run"):
-			$States.change_state("Run")
-		else:
-			$States.change_state("Walk")
-	if Input.is_action_just_pressed("action_attack"):
-		$States.change_state("Kick")
+	if Input.is_action_pressed("action_run") && $States.current_state.name != "Run":
+		$States.change_state("Run")
+	elif Input.is_action_just_released("action_run") && velocity != Vector2.ZERO:
+		$States.change_state("Walk")
+	elif Input.is_action_just_released("action_run") && velocity == Vector2.ZERO:
+		$States.change_state("Idle")
 
 func _on_states_state_changed(state) -> void:
-	#print("[Player State] " + state)
-	pass
+	print("[Player State] " + state)
 
 func save():
 	var oPos = get_position()
