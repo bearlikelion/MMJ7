@@ -13,7 +13,7 @@ func _ready():
 		"sidestep":$SideStep,
 		"wallrun":$wallRun,
 		"hurt": $Hurt,
-		"shoot": $Shoot,
+		"attack": $Attack,
 	}
 
 

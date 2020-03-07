@@ -19,6 +19,7 @@ var wall_dir := 0
 var wall_raycast: Node
 
 func _ready():
+	var a=Fmod.FMOD_SPEAKERMODE_RAW
 	pass # Replace with function body.
 
 func _process(delta):
