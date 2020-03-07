@@ -14,6 +14,7 @@ func _ready():
 		"wallrun":$wallRun,
 		"hurt": $Hurt,
 		"shoot": $Shoot,
+		"kick": $Kick,
 	}
 
 
@@ -23,12 +24,16 @@ func _input(event):
 			_change_state("jump")
 		if event.scancode==KEY_Q and !event.pressed:
 			_change_state("sidestep")
+		if event.scancode==KEY_X and !event.pressed:
+			_change_state("kick")
 		#if event.scancode==KEY_Q and !event.pressed and current_state.get_name()!="SideStep":
 		#	_change_state("davsidestep")
 	._input(event)
 		
 	._input(event)
 
+func _process(delta):
+	get_parent().get_node("Debug").get_node("Label").text = current_state.get_name()
 
 func _change_state(state_name):
 	"""

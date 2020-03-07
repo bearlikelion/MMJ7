@@ -5,6 +5,7 @@ var data = {
 	"pos_y": position.y,
 	"hp": 10,
 	"maxHp": 10,
+	"kickSpeed": 0.3,
 	}
 
 
