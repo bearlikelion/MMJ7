@@ -15,6 +15,7 @@ func _ready():
 		"hurt": $Hurt,
 		"shoot": $Shoot,
 		"kick": $Kick,
+		"aoe": $AOE,
 	}
 
 
@@ -26,6 +27,8 @@ func _input(event):
 			_change_state("sidestep")
 		if event.scancode==KEY_X and !event.pressed:
 			_change_state("kick")
+		if event.scancode==KEY_Z and !event.pressed:
+			_change_state("aoe")
 		#if event.scancode==KEY_Q and !event.pressed and current_state.get_name()!="SideStep":
 		#	_change_state("davsidestep")
 	._input(event)

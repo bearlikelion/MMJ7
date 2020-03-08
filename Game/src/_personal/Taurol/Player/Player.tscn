@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/_personal/Taurol/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/_personal/Taurol/Player/PlayerFSM.gd" type="Script" id=2]
@@ -12,9 +12,11 @@
 [ext_resource path="res://src/_personal/Taurol/Player/States/Hurt.gd" type="Script" id=10]
 [ext_resource path="res://src/_personal/Taurol/Player/States/Shoot.gd" type="Script" id=11]
 [ext_resource path="res://src/_personal/Taurol/Player/States/Kick.gd" type="Script" id=12]
-[ext_resource path="res://assets/Sprites/temp_player.png" type="Texture" id=13]
-[ext_resource path="res://src/Scripts/kickArea.gd" type="Script" id=14]
-[ext_resource path="res://src/_personal/RinatSatyl/Player/attackEffect.png" type="Texture" id=15]
+[ext_resource path="res://src/_personal/Taurol/Player/States/AOE.gd" type="Script" id=13]
+[ext_resource path="res://assets/Sprites/temp_player.png" type="Texture" id=14]
+[ext_resource path="res://src/Scripts/kickArea.gd" type="Script" id=15]
+[ext_resource path="res://src/_personal/RinatSatyl/Player/attackEffect.png" type="Texture" id=16]
+[ext_resource path="res://src/Scripts/aoeArea.gd" type="Script" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -35,6 +37,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 54.8875
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -99,12 +104,15 @@ script = ExtResource( 11 )
 [node name="Kick" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
 
+[node name="AOE" type="Node" parent="StateMachine"]
+script = ExtResource( 13 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.540359, 4.32288 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hurt = SubResource( 2 )
@@ -156,12 +164,12 @@ valign = 2
 
 [node name="kick" type="Area2D" parent="Attacks"]
 position = Vector2( 0, 4 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 
 [node name="attackSprite" type="Sprite" parent="Attacks/kick"]
 position = Vector2( 17.837, 2.42132 )
 scale = Vector2( 0.212198, 0.212198 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="col" type="CollisionShape2D" parent="Attacks/kick"]
 position = Vector2( 17.5992, 2.0169 )
@@ -174,4 +182,19 @@ margin_left = -16.0
 margin_top = -23.0
 margin_right = 16.0
 margin_bottom = -9.0
+
+[node name="aoe" type="Area2D" parent="Attacks"]
+script = ExtResource( 17 )
+
+[node name="attackSprite" type="Sprite" parent="Attacks/aoe"]
+visible = false
+modulate = Color( 1, 1, 1, 0.0862745 )
+position = Vector2( 0.473883, 2.94817 )
+scale = Vector2( 1.69934, 1.72331 )
+texture = ExtResource( 16 )
+
+[node name="col" type="CollisionShape2D" parent="Attacks/aoe"]
+position = Vector2( 0, 4 )
+shape = SubResource( 4 )
+disabled = true
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine" method="_on_AnimationPlayer_animation_finished"]

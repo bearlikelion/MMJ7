@@ -1,10 +1,10 @@
 extends "res://src/_personal/Taurol/StateMachine/state.gd"
 
 func enter():
-	pass
+	owner.get_node("AgroRadius").get_node("CollisionShape2D").scale = Vector2(3, 3)
 	
 func exit():
-	pass
+	owner.get_node("AgroRadius").get_node("CollisionShape2D").scale = Vector2(1 ,1)
 
 func update(delta):
 	owner.velocity = Vector2.ZERO

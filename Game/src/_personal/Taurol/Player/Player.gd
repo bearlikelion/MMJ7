@@ -6,6 +6,7 @@ var data = {
 	"hp": 10,
 	"maxHp": 10,
 	"kickSpeed": 0.3,
+	"aoeSpeed": 0.5,
 	}
 
 

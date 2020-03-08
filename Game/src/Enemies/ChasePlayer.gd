@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal damageTaken
+signal stunTaken
 
 export (int) var speed = 75
 export var isLoaded = false
@@ -16,16 +17,21 @@ var player = null
 func _physics_process(_delta) -> void:
 	velocity = move_and_slide(velocity)
 	$Label.text = str(data.hp)
+	$Label4.text = str( $AgroRadius.get_node("CollisionShape2D").disabled )
 
 func damage():
 	emit_signal("damageTaken")
-	
+func stun():
+	emit_signal("stunTaken")
+
 func _on_AgroRadius_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		player = body
+		$Label3.text = player.name
 	
 func _on_AgroRadius_body_exited(_body) -> void:
 	player = null
+	$Label3.text = "None"
 
 func save():
 	var oPos = get_position()
@@ -41,4 +47,3 @@ func load(rData):
 	position.x = data.pos_x
 	position.y = data.pos_y
 	print(rData.testVAr)
-

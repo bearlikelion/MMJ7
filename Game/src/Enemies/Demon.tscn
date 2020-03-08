@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Enemies/ChasePlayer.gd" type="Script" id=1]
 [ext_resource path="res://assets/Sprites/temp_demon.png" type="Texture" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://src/Enemies/EnemyIdle.gd" type="Script" id=4]
 [ext_resource path="res://src/Enemies/EnemyChase.gd" type="Script" id=5]
 [ext_resource path="res://src/Enemies/EnemyDamaged.gd" type="Script" id=6]
+[ext_resource path="res://src/Enemies/EnemyStunned.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 121.374
 
 [node name="Demon" type="KinematicBody2D" groups=[
 "enemy",
@@ -25,7 +27,6 @@ shape = SubResource( 1 )
 [node name="AgroRadius" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRadius"]
-scale = Vector2( 15, 15 )
 shape = SubResource( 2 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -41,6 +42,9 @@ script = ExtResource( 5 )
 [node name="Damaged" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 
+[node name="Stunned" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+
 [node name="Label" type="Label" parent="."]
 margin_left = 16.0
 margin_right = 56.0
@@ -53,6 +57,21 @@ margin_top = -18.2828
 margin_right = 55.6415
 margin_bottom = -4.28278
 text = "test"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 16.3585
+margin_top = -32.2637
+margin_right = 56.3585
+margin_bottom = -18.2637
+text = "test"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 16.0
+margin_top = -45.1692
+margin_right = 56.0
+margin_bottom = -31.1692
+text = "test"
 [connection signal="damageTaken" from="." to="StateMachine" method="_on_Demon_damageTaken"]
+[connection signal="stunTaken" from="." to="StateMachine" method="_on_Demon_stunTaken"]
 [connection signal="body_entered" from="AgroRadius" to="." method="_on_AgroRadius_body_entered"]
 [connection signal="body_exited" from="AgroRadius" to="." method="_on_AgroRadius_body_exited"]

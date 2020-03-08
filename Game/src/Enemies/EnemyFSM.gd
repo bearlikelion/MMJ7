@@ -5,6 +5,7 @@ func _ready():
 		"idle": $Idle,
 		"chase":$Chase,
 		"damaged":$Damaged,
+		"stun":$Stunned,
 	}
 
 func _process(delta):
@@ -22,3 +23,5 @@ func _change_state(state_name):
 
 func _on_Demon_damageTaken():
 	_change_state("damaged")
+func _on_Demon_stunTaken():
+	_change_state("stun")
