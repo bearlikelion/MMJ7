@@ -36,7 +36,14 @@ func _input(event):
 	._input(event)
 
 func _process(delta):
-	get_parent().get_node("Debug").get_node("Label").text = current_state.get_name()
+	if Input.is_action_pressed("up"):
+		owner.get_node("AnimationPlayer").play("Idle_Up")
+	elif Input.is_action_pressed("down"):
+		owner.get_node("AnimationPlayer").play("Idle_Down")
+	elif Input.is_action_pressed("left"):
+		owner.get_node("AnimationPlayer").play("Idle_Left")
+	elif Input.is_action_pressed("right"):
+		owner.get_node("AnimationPlayer").play("Idle_Right")
 
 func _change_state(state_name):
 	"""
