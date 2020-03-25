@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Jump Back.wav-4fb1f74b2f6e8590b2a14a44ce275aea.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Jump/Jump Back.wav"
+dest_files=[ "res://.import/Jump Back.wav-4fb1f74b2f6e8590b2a14a44ce275aea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Damage 3.wav-dd06154c97c100ae55af44caadc9e4ff.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Damage/Damage 3.wav"
+dest_files=[ "res://.import/Damage 3.wav-dd06154c97c100ae55af44caadc9e4ff.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

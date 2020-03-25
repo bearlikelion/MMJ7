@@ -13,9 +13,17 @@ func get_input_direction():
 	return input_direction
 
 
-func update_look_direction(direction):
+func update_look_direction(direction:Vector2):
+	var aux=direction.angle_to(Vector2(0,-1))
+	if abs(aux)==PI/4:
+		if aux:
+			pass
+	else:
+		
+		pass
 	if direction and owner.look_direction != direction:
 		owner.look_direction = direction
 	if not direction.x in [-1, 1]:
 		return
 	owner.get_node("Sprite").set_scale(Vector2(direction.x, 1))
+	print(direction)

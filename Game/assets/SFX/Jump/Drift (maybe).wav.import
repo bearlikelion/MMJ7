@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Drift (maybe).wav-f480a9a088f3343bb0f4a9b6ea948f81.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Jump/Drift (maybe).wav"
+dest_files=[ "res://.import/Drift (maybe).wav-f480a9a088f3343bb0f4a9b6ea948f81.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

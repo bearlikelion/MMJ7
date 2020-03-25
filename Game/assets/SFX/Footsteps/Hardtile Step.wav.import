@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hardtile Step.wav-f4ce76a40b09b5de275e64a87a980be5.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Footsteps/Hardtile Step.wav"
+dest_files=[ "res://.import/Hardtile Step.wav-f4ce76a40b09b5de275e64a87a980be5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
