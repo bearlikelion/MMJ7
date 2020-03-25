@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/StateMachine/state.gd"
+extends "res://src/StateMachine/state.gd"
 
 func enter():
 	owner.get_node("AgroRadius").get_node("CollisionShape2D").scale = Vector2(3, 3)

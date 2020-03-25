@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/Player/States/Move.gd"
+extends "res://src/Player/States/Move.gd"
 
 
 export var ACCELERATION := 2000

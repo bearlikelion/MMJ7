@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/Player/States/Move.gd"
+extends "res://src/Player/States/Move.gd"
 
 
 export var REACTIVE_DECCEL :=false
@@ -27,6 +27,19 @@ func update(delta):
 	if !Input.is_action_pressed("action_run"):
 		accel=JOGGING_ACCELERATION
 		deccel=JOGGING_DECCELERATION
+	
+	if Input.is_action_pressed("up"):
+		owner.data.dir = "up"
+		owner.get_node("AnimationPlayer").play("Idle_Up")
+	elif Input.is_action_pressed("down"):
+		owner.data.dir = "down"
+		owner.get_node("AnimationPlayer").play("Idle_Down")
+	elif Input.is_action_pressed("left"):
+		owner.data.dir = "left"
+		owner.get_node("AnimationPlayer").play("Idle_Left")
+	elif Input.is_action_pressed("right"):
+		owner.data.dir = "right"
+		owner.get_node("AnimationPlayer").play("Idle_Right")
 	
 	move(input_direction.normalized(),accel,deccel,delta)
 

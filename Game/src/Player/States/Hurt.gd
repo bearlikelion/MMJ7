@@ -1,6 +1,4 @@
-extends "res://src/_personal/Taurol/StateMachine/state.gd"
-
-
+extends "res://src/StateMachine/state.gd"
 
 func enter():
 	owner.get_node("AnimationPlayer").play("Hurt")

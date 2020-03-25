@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "MovingPlatform",
 "language": "GDScript",
-"path": "res://src/_personal/Taurol/Enviroment/MovingPlatform.gd"
+"path": "res://src/Enviroment/MovingPlatform.gd"
 } ]
 _global_script_class_icons={
 "FmodNative": "",

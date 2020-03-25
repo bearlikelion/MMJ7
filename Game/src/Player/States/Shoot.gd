@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/StateMachine/state.gd"
+extends "res://src/StateMachine/state.gd"
 
 
 # Declare member variables here. Examples:

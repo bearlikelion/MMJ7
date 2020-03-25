@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Main_Character_Idle_left.png-64240d79f4a9d35c45daa24aa886a373.stex"
+path="res://.import/MC_Attacks.png-f3b274a846e73e32190dbb90d376f932.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Main_Character_Idle_left.png"
-dest_files=[ "res://.import/Main_Character_Idle_left.png-64240d79f4a9d35c45daa24aa886a373.stex" ]
+source_file="res://assets/Sprites/MC_Attacks.png"
+dest_files=[ "res://.import/MC_Attacks.png-f3b274a846e73e32190dbb90d376f932.stex" ]
 
 [params]
 

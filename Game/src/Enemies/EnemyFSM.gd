@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/StateMachine/state_machine.gd"
+extends "res://src/StateMachine/state_machine.gd"
 
 func _ready():
 	states_map = {

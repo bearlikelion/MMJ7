@@ -1,19 +1,19 @@
-extends Node
+extends "res://src/Player/States/motion.gd"
 
-onready var state_machine = get_parent()
-onready var player = state_machine.get_parent()
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
 
 func enter():
-	player.velocity = Vector2.ZERO
-	player.velocity = player.velocity.normalized() * player.speed
-
-func exit():
+	#print("Idle")
+	#print(owner.motion)
+	#owner.get_node("AnimationPlayer").play("idle")
 	pass
 
-func update(_delta):
-	# if player.velocity != Vector2.ZERO:
-	# 	if player.is_running:
-	# 		state_machine.change_state("Run")
-	# 	else:
-	# 		state_machine.change_state("Walk")
-	pass
+
+func update(delta):
+	var input_direction = get_input_direction()
+	if input_direction!=Vector2.ZERO:
+		emit_signal("finished", "runSlow")

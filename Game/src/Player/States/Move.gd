@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/Player/States/motion.gd"
+extends "res://src/Player/States/motion.gd"
 
 export var MAX_SPEED :=300
 

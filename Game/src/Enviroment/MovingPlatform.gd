@@ -2,7 +2,6 @@ class_name MovingPlatform
 
 extends Area2D
 
-
 var player_entered:=false
 var player=null
 var on_board:=[]

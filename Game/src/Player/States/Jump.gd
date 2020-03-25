@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/Player/States/Move.gd"
+extends "res://src/Player/States/Move.gd"
 
 export var JUMP_SPEED:=500
 export var ENDING_SPEED:=200

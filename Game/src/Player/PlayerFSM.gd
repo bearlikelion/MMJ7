@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/StateMachine/state_machine.gd"
+extends "res://src/StateMachine/state_machine.gd"
 
 var can_run:=true
 
@@ -25,25 +25,16 @@ func _input(event):
 			_change_state("jump")
 		if event.scancode==KEY_Q and !event.pressed:
 			_change_state("sidestep")
-		if event.scancode==KEY_X and !event.pressed:
+		if event.scancode==KEY_X and !event.pressed and current_state.get_name() != "kick":
 			_change_state("kick")
 		if event.scancode==KEY_Z and !event.pressed:
 			_change_state("aoe")
 		#if event.scancode==KEY_Q and !event.pressed and current_state.get_name()!="SideStep":
 		#	_change_state("davsidestep")
 	._input(event)
-		
-	._input(event)
 
 func _process(delta):
-	if Input.is_action_pressed("up"):
-		owner.get_node("AnimationPlayer").play("Idle_Up")
-	elif Input.is_action_pressed("down"):
-		owner.get_node("AnimationPlayer").play("Idle_Down")
-	elif Input.is_action_pressed("left"):
-		owner.get_node("AnimationPlayer").play("Idle_Left")
-	elif Input.is_action_pressed("right"):
-		owner.get_node("AnimationPlayer").play("Idle_Right")
+	owner.get_node("Label").text = current_state.get_name()
 
 func _change_state(state_name):
 	"""

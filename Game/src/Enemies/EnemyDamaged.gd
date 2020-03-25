@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/StateMachine/state.gd"
+extends "res://src/StateMachine/state.gd"
 
 var timer = 0.3
 var playerPos = Vector2.ZERO

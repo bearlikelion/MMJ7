@@ -1,21 +1,62 @@
-extends Node
+extends "res://src/Player/States/Move.gd"
 
-onready var state_machine = get_parent()
-onready var player = state_machine.get_parent()
 
-onready var last_velocity = player.velocity
+export var ENDING_SPEED=50
+export var DURATION:=0.1
+export(NodePath) var RAYCASTS
+
+var timer :=Timer.new()
+var ACCELERATION := 500
+var DECCELERATION:= 300
+
+
+func _ready():
+	for raycast in get_node(RAYCASTS).get_children():
+		raycast.add_exception(owner)
+	add_child(timer)
+	timer.wait_time=DURATION
+	timer.connect("timeout",self,"_on_timer_timeout")
+
 
 func enter():
-	player.velocity = calc_force_sidestep()
-	state_machine.get_node("sidestep_timer").start()
-	pass
+	if owner.motion==Vector2.ZERO:
+		emit_signal("finished","idle")
+		return
+	owner.motion=owner.motion.normalized()*MAX_SPEED
+	timer.start()
+	owner.modulate=Color.brown
+	.enter()
 
-func exit():
-	pass
 
 func update(delta):
-	pass
+	for raycast in get_node(RAYCASTS).get_children():
+		
+		if raycast.is_colliding():
+			print(raycast.get_collider())
+			if raycast.get_collider().is_in_group("walls"):
+				owner.wall_raycast = raycast
+				match raycast.name:
+					"south_cast":
+						owner.wall_dir = owner.WallDirections.SOUTH
+						print("a")
+					"north_cast":
+						owner.wall_dir = owner.WallDirections.NORTH
+						print("b")
+					"east_cast":
+						owner.wall_dir = owner.WallDirections.EAST
+						print("c")
+					"west_cast":
+						owner.wall_dir = owner.WallDirections.WEST
+						print("d")
+				emit_signal("finished", "wallrun")
+	move(owner.motion.normalized(),delta,ACCELERATION,DECCELERATION)
 
-func calc_force_sidestep(multiplier = 1):
-	#calculates vector2 that represents the force from the starting phase of a sidestep
-	return player.input_axes * player.FORCE_SIDESTEP * multiplier
+
+func _on_timer_timeout():
+	emit_signal("finished","runSlow")
+
+
+func exit():
+	timer.stop()
+	owner.modulate=Color(1,1,1,1)
+	owner.motion=owner.motion.normalized()*ENDING_SPEED

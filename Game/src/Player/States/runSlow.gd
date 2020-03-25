@@ -1,10 +1,10 @@
-extends "res://src/_personal/Taurol/Player/States/RunBase.gd"
+extends "res://src/Player/States/RunBase.gd"
 
 
 var offset:int=5
 
 
-func update(delta):
+func update(delta):	
 	if owner.motion.length()>MAX_SPEED+offset:
 		emit_signal("finished","runMedium")
 		return

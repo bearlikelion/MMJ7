@@ -1,4 +1,4 @@
-extends "res://src/_personal/Taurol/Player/States/RunBase.gd"
+extends "res://src/Player/States/RunBase.gd"
 
 
 export var JOGGING_COUNTER_ACCELERATION :=0
