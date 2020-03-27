@@ -6,10 +6,12 @@ func _ready():
 		"chase":$Chase,
 		"damaged":$Damaged,
 		"stun":$Stunned,
+		"death":$Death,
+		"dead":$Dead,
 	}
 
 func _process(delta):
-	get_parent().get_node("Label2").text = current_state.get_name()
+	pass
 
 func _change_state(state_name):
 	"""

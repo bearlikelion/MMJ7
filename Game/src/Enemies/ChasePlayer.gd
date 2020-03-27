@@ -10,6 +10,7 @@ var data = {
 	"pos_y": position.y,
 	"testVAr": "Boy",
 	"hp": 5,
+	"state": "alive"
 	}
 var velocity = Vector2.ZERO
 var player = null
@@ -27,11 +28,10 @@ func stun():
 func _on_AgroRadius_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		player = body
-		$Label3.text = player.name
 	
 func _on_AgroRadius_body_exited(_body) -> void:
-	player = null
-	$Label3.text = "None"
+	if _body.is_in_group("player"):
+		player = null
 
 func save():
 	var oPos = get_position()

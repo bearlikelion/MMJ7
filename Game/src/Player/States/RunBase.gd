@@ -30,16 +30,16 @@ func update(delta):
 	
 	if Input.is_action_pressed("up"):
 		owner.data.dir = "up"
-		owner.get_node("AnimationPlayer").play("Idle_Up")
+		owner.get_node("AnimationPlayer").play("Run_Up")
 	elif Input.is_action_pressed("down"):
 		owner.data.dir = "down"
-		owner.get_node("AnimationPlayer").play("Idle_Down")
+		owner.get_node("AnimationPlayer").play("Run_Down")
 	elif Input.is_action_pressed("left"):
 		owner.data.dir = "left"
-		owner.get_node("AnimationPlayer").play("Idle_Left")
+		owner.get_node("AnimationPlayer").play("Run_Left")
 	elif Input.is_action_pressed("right"):
 		owner.data.dir = "right"
-		owner.get_node("AnimationPlayer").play("Idle_Right")
+		owner.get_node("AnimationPlayer").play("Run_Right")
 	
 	move(input_direction.normalized(),accel,deccel,delta)
 

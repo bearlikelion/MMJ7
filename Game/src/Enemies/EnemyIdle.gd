@@ -1,7 +1,7 @@
 extends "res://src/StateMachine/state.gd"
 
 func enter():
-	pass
+	owner.get_node("AnimationPlayer").play("Idle")
 
 func exit():
 	pass

@@ -5,6 +5,8 @@ export var JOGGING_COUNTER_ACCELERATION :=0
 
 var del:=0.0
 
+func enter():
+	owner.get_node("AnimationPlayer").set_speed_scale(1.3)
 
 func update(delta):
 	if owner.motion.length()<=MIN_SPEED:

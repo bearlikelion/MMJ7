@@ -6,6 +6,8 @@ export var JOGGING_COUNTER_ACCELERATION :=0
 var offset:int=5
 var del:=0.0
 
+func enter():
+	owner.get_node("AnimationPlayer").set_speed_scale(1.1)
 
 func update(delta):
 	if owner.motion.length()>=MAX_SPEED+offset:

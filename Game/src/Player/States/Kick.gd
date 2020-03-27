@@ -5,15 +5,17 @@ export var ENDING_SPEED = 0.2
 var timer
 var kick
 var dir
+var kickTimer = 0.12
 
 func _ready():
 	kick = owner.get_node("Attacks").get_node("kick")
 	
 func enter():
+	owner.get_node("AnimationPlayer").set_speed_scale(1)
 	owner.motion=owner.motion.normalized()/5
 	timer = 0.48
-	kick.get_node("col").disabled = false
-	
+	kickTimer = 0.12 * (timer/0.48)
+
 	if owner.data.dir == "left":
 		dir = 180
 		owner.get_node("AnimationPlayer").play("Kick_Left")
@@ -29,8 +31,14 @@ func enter():
 
 func update(delta):
 	kick.rotation_degrees = dir
+	
+	if kickTimer > 0:
+		kickTimer -= 1*delta
+	else:
+		kick.get_node("col").disabled = false
+			
 	if timer > 0:
-		timer -= delta*1
+		timer -= 1*delta
 	else:
 		kick.get_node("col").disabled = true
 		emit_signal("finished","runSlow")

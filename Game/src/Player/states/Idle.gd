@@ -7,10 +7,14 @@ extends "res://src/Player/States/motion.gd"
 
 
 func enter():
-	#print("Idle")
-	#print(owner.motion)
-	#owner.get_node("AnimationPlayer").play("idle")
-	pass
+	if owner.data.dir == "left":
+		owner.get_node("AnimationPlayer").play("Idle_Left")
+	elif owner.data.dir == "right":
+		owner.get_node("AnimationPlayer").play("Idle_Right")
+	elif owner.data.dir == "up":
+		owner.get_node("AnimationPlayer").play("Idle_Up")
+	elif owner.data.dir == "down":
+		owner.get_node("AnimationPlayer").play("Idle_Down")
 
 
 func update(delta):

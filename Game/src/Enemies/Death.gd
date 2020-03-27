@@ -1,21 +1,16 @@
 extends "res://src/StateMachine/state.gd"
 
-var timer = 0.3
+var timer = 0
+var pushTimer = 0.2
 var plrDir
 
 func enter():
-	timer = 0.3
-	owner.data.hp -= 1
-	if owner.data.hp <= 0:
-		emit_signal("finished","death")
-		owner.data.state = "dead"
-	
-func exit():
-	pass
+	timer = 1
+	owner.get_node("AnimationPlayer").play("Death")
 
 func update(delta):
-	if timer > 0:
-		timer -= delta*1
+	if pushTimer > 0:
+		pushTimer -= 1*delta
 		var playerGroup = get_tree().get_nodes_in_group("player")
 		for i in playerGroup:
 			plrDir = i.data.dir
@@ -28,6 +23,10 @@ func update(delta):
 			pushTo = Vector2(0,-1)
 		elif plrDir == "down":
 			pushTo = Vector2(0,1)
-		owner.velocity = pushTo * (owner.speed*3) * (timer/0.3)
+		owner.velocity = pushTo * (owner.speed*3) * (timer/1)
 	else:
-		emit_signal("finished","idle")
+		owner.velocity = Vector2.ZERO
+	if timer > 0:
+		timer -= 1*delta
+	else:
+		emit_signal("finished","dead")
