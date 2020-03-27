@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Tileset/Grass_rocks.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/Tileset/Trees.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/Tileset/Grass_Ruins_WIP.tres" type="TileSet" id=3]
+[ext_resource path="res://assets/Tileset/WaterTiles.tres" type="TileSet" id=4]
 
 [node name="Map1" type="Node2D"]
 
@@ -16,8 +17,12 @@ tile_data = PoolIntArray( 262150, 8, 0, 262151, 8, 0, 262155, 1, 0, 262156, 1, 2
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 393237, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 655366, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655378, 0, 0, 655383, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851991, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983059, 0, 0, 1048589, 0, 0 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 format = 1
+
+[node name="Water" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+tile_data = PoolIntArray( 131075, 536870916, 0, 131076, 536870912, 0, 131077, 536870914, 0, 131078, 536870914, 0, 131079, 536870912, 0, 131080, 536870917, 0 )
